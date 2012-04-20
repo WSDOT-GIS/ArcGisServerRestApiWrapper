@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace ArcGisServerRestApiWrapper
+namespace Esri.ArcGisServer.Rest
 {
+	/// <summary>
+	/// Specifies parameters for the export map operation.
+	/// </summary>
 	public class ExportMapParameters
 	{
 		/// <summary>
-		/// f
+		/// The response format ("f" parameter).
 		/// </summary>
 		public ExportMapResponseFormat? ResponseFormat { get; set; }
 
 		/// <summary>
-		/// bbox
+		/// The bounding box of the map image.  ("bbox" parameter).  This array should contain four values: XMin, YMin, XMax, YMax.
 		/// </summary>
 		public double[] BoundingBox { get; set; }
 
 		/// <summary>
-		/// size
+		/// The size of the image in pixels, [ width, height ]. ("size" parameter)
 		/// </summary>
 		public int[] Size { get; set; }
 
@@ -45,7 +46,7 @@ namespace ArcGisServerRestApiWrapper
 		/// <summary>
 		/// layerDefs
 		/// </summary>
-		public LayerDefinition[] LayerDefinitions { get; set; }
+		public ExportMapLayerDefinition[] LayerDefinitions { get; set; }
 
 		/// <summary>
 		/// layers
@@ -127,7 +128,7 @@ namespace ArcGisServerRestApiWrapper
 			if (this.LayerDefinitions != null)
 			{
 				if (builder.Length > 0) builder.Append("&");
-				builder.AppendFormat("layerDefs={0}", string.Join<LayerDefinition>(";", this.LayerDefinitions));
+				builder.AppendFormat("layerDefs={0}", string.Join<ExportMapLayerDefinition>(";", this.LayerDefinitions));
 			}
 
 			if (this.Layers != null && this.Layers.Length > 0 && this.LayersMode.HasValue)
@@ -167,88 +168,4 @@ namespace ArcGisServerRestApiWrapper
 		}
 	}
 
-	public class LayerDefinition
-	{
-		public int LayerId { get; set; }
-		public string Query { get; set; }
-
-		public override string ToString()
-		{
-			return string.Format("{0}:{1}", LayerId, Query);
-		}
-	}
-
-	public enum ExportMapResponseFormat
-	{
-		Html,
-		Json,
-		Image,
-		Kmz
-	}
-
-	public enum ExportMapImageFormat
-	{
-		Png,
-		Png8,
-		Png24,
-		Png32,
-		Jpg,
-		Pdf,
-		Bmp,
-		Gif,
-		Svg
-	}
-
-	public enum ExportMapLayersMode
-	{
-		Show,
-		Hide,
-		Include,
-		Exclude
-	}
-
-	public class ExportMapLayerTimeOptions
-	{
-		public int LayerId { get; set; }
-		public bool UseTime { get; set; }
-		public bool? TimeDataCumulative { get; set; }
-
-		public double? TimeOffset { get; set; }
-		public TimeUnit? TimeOffsetUnits { get; set; }
-
-		public override string ToString()
-		{
-			if (!UseTime)
-			{
-				return LayerId + ": {\"useTime\":false}";
-			}
-			else
-			{
-				List<string> options = new List<string>();
-				options.Add(string.Format("\"useTime\":{0}", UseTime));
-				options.Add(string.Format("\"timeDataCumulative\":{0}", TimeDataCumulative.GetValueOrDefault(false)));
-				if (TimeOffset.HasValue)
-				{
-					options.Add(string.Format("\"timeOffsetOffset\":{0}", TimeOffset.GetValueOrDefault()));
-					options.Add(string.Format("\"timeOffsetUnits\":esriTimeUnits{0}", TimeOffsetUnits.GetValueOrDefault(TimeUnit.Unknown)));
-				}
-				return string.Concat("{", string.Join(",", options), "}");
-			}
-		}
-	}
-
-	public enum TimeUnit
-	{
-		Unknown,
-		Centuries, 
-		Days, 
-		Decades,
-		Hours, 
-		Milliseconds, 
-		Minutes,
-		Months, 
-		Seconds, 
-		Weeks, 
-		Years,
-	}
 }

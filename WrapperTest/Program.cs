@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ArcGisServerRestApiWrapper;
-using System.Diagnostics;
 using System.IO;
+using Esri.ArcGisServer.Rest;
 
 namespace WrapperTest
 {

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
-namespace ArcGisServerRestApiWrapper
+namespace Esri.ArcGisServer.Rest
 {
 	public class MapExportCompletedEventArgs : EventArgs
 	{
+		public ExportMapParameters Parameters { get; set; }
 		public Stream ResponseStream { get; set; }
 		public Exception Error { get; set; }
 	}

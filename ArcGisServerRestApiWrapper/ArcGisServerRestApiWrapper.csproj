@@ -8,7 +8,7 @@
     <ProjectGuid>{6B33CDEE-5B6F-4F16-BC8E-D48D41CEEFE5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArcGisServerRestApiWrapper</RootNamespace>
+    <RootNamespace>Esri.ArcGisServer.Rest</RootNamespace>
     <AssemblyName>ArcGisServerRestApiWrapper</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ArcGisServerRestApiWrapper.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\ArcGisServerRestApiWrapper.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,12 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportMapImageFormat.cs" />
+    <Compile Include="ExportMapLayerDefinition.cs" />
+    <Compile Include="ExportMapLayersMode.cs" />
+    <Compile Include="ExportMapLayerTimeOptions.cs" />
     <Compile Include="ExportMapParameters.cs" />
+    <Compile Include="ExportMapRequestState.cs" />
+    <Compile Include="ExportMapResponseFormat.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="MapExportCompletedEventArgs.cs" />
     <Compile Include="MapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpatialReference.cs" />
+    <Compile Include="TimeUnit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

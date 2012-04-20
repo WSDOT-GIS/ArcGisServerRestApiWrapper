@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace ArcGisServerRestApiWrapper
+namespace Esri.ArcGisServer.Rest
 {
+	/// <summary>
+	/// Provides extension methods.
+	/// </summary>
 	public static class Extensions
 	{
 		// PowerShell: ([DateTime]"Jan 1, 1970") + [TimeSpan](1199145600000 * 10000) = (1 Jan 2008 00:00:00 GMT) 
