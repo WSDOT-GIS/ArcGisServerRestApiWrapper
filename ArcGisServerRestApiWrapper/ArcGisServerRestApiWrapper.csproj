@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ExportMapParameters.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="MapExportCompletedEventArgs.cs" />
     <Compile Include="MapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpatialReference.cs" />

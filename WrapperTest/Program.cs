@@ -10,6 +10,8 @@ namespace WrapperTest
 {
 	class Program
 	{
+		static bool finished = false;
+
 		static void Main(string[] args)
 		{
 			var parameters = new ExportMapParameters
@@ -27,13 +29,28 @@ namespace WrapperTest
 				Transparent = true
 			};
 			var mapService = new MapService { Uri = new Uri("http://wsdot.wa.gov/geosvcs/ArcGIS/rest/services/Shared/WebBaseMapWebMercator/MapServer") };
-			using (var stream = mapService.ExportMap(parameters))
+
+			mapService.ExportMapCompleted += new EventHandler<MapExportCompletedEventArgs>(mapService_ExportMapCompleted);
+
+			IAsyncResult asyncResult = mapService.BeginExportMap(parameters);
+
+			do
+			{
+
+			} while (!finished);
+
+		}
+
+		static void mapService_ExportMapCompleted(object sender, MapExportCompletedEventArgs e)
+		{
+			using (var stream = e.ResponseStream)
 			{
 				using (FileStream fs = new FileStream("output.png", FileMode.Create))
 				{
 					stream.CopyTo(fs);
 				}
 			}
+			finished = true;
 		}
 	}
 }
