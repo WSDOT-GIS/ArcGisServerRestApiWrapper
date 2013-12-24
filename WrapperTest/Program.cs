@@ -24,7 +24,7 @@ namespace WrapperTest
 				Size = new int[] { 600, 800 },
 				Transparent = true
 			};
-			var mapService = new MapService { Uri = new Uri("http://wsdot.wa.gov/geosvcs/ArcGIS/rest/services/Shared/WebBaseMapWebMercator/MapServer") };
+			var mapService = new MapService { Uri = new Uri("http://www.wsdot.wa.gov/geosvcs/ArcGIS/rest/services/Shared/WebBaseMapWebMercator/MapServer") };
 
 			mapService.ExportMapCompleted += new EventHandler<MapExportCompletedEventArgs>(mapService_ExportMapCompleted);
 
