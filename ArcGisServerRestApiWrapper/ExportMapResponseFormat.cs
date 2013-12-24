@@ -1,5 +1,4 @@
-﻿
-namespace Esri.ArcGisServer.Rest
+﻿namespace Esri.ArcGisServer.Rest
 {
 
 
@@ -8,9 +7,13 @@ namespace Esri.ArcGisServer.Rest
 	/// </summary>
 	public enum ExportMapResponseFormat
 	{
+		/// <summary>Html</summary>
 		Html,
+		/// <summary>Json</summary>
 		Json,
+		/// <summary>Image</summary>
 		Image,
+		/// <summary>Kmz</summary>
 		Kmz
 	}
 

@@ -7,16 +7,27 @@ namespace Esri.ArcGisServer.Rest
 	/// </summary>
 	public enum TimeUnit
 	{
+		/// <summary>Unknown</summary>
 		Unknown,
-		Centuries, 
-		Days, 
+		/// <summary>Centuries</summary>
+		Centuries,
+		/// <summary>Days</summary>
+		Days,
+		/// <summary>Decades</summary>
 		Decades,
-		Hours, 
-		Milliseconds, 
+		/// <summary>Hours</summary>
+		Hours,
+		/// <summary>Milliseconds</summary>
+		Milliseconds,
+		/// <summary>Minutes</summary>
 		Minutes,
-		Months, 
-		Seconds, 
-		Weeks, 
+		/// <summary>Months</summary>
+		Months,
+		/// <summary>Seconds</summary>
+		Seconds,
+		/// <summary>Weeks</summary>
+		Weeks,
+		/// <summary>Years</summary>
 		Years,
 	}
 }

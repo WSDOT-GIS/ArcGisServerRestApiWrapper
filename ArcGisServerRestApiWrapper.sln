@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcGisServerRestApiWrapper", "ArcGisServerRestApiWrapper\ArcGisServerRestApiWrapper.csproj", "{6B33CDEE-5B6F-4F16-BC8E-D48D41CEEFE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapperTest", "WrapperTest\WrapperTest.csproj", "{3B767B12-AB20-4B78-979A-D7BBAB446C8A}"
