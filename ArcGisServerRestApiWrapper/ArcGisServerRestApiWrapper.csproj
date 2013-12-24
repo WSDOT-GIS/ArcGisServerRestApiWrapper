@@ -52,7 +52,15 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Maps\MapExportCompletedEventArgs.cs" />
     <Compile Include="Maps\MapService.cs" />
+    <Compile Include="MeasureUnits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Route\AttributeParameterValue.cs" />
+    <Compile Include="Route\DirectionsOutputType.cs" />
+    <Compile Include="Route\esriNFSB.cs" />
+    <Compile Include="Route\NetworkAnalystUnits.cs" />
+    <Compile Include="Route\OutputLineOptions.cs" />
+    <Compile Include="Route\RouteService.cs" />
+    <Compile Include="Route\SolveParameters.cs" />
     <Compile Include="SpatialReference.cs" />
     <Compile Include="TimeUnit.cs" />
   </ItemGroup>

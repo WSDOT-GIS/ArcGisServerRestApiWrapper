@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Esri.ArcGisServer.Rest.Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Esri.ArcGisServer.Rest.Maps;
+using System;
 using System.IO;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using UnitTests.Properties;
 
 namespace UnitTests
 {
@@ -14,10 +15,8 @@ namespace UnitTests
         [TestMethod]
         public void TestExportMap()
         {
-            var testProperties = MethodInfo.GetCurrentMethod().GetCustomAttributes<TestPropertyAttribute>();
-            var mapServiceUrl = (from p in testProperties
-                                where p.Name == "mapServiceUrl"
-                                select p.Value).Single();
+            var testProperties = MethodInfo.GetCurrentMethod().GetCustomAttributes<TestPropertyAttribute>().ToDictionary(k => k.Name, v => v.Value);
+            var mapServiceUrl = testProperties["mapServiceUrl"];
 
             var parameters = new ExportMapParameters
             {
@@ -42,28 +41,14 @@ namespace UnitTests
             {
                 image.CopyTo(fs);
             }
-
-
-            ////mapService.ExportMapCompleted += new EventHandler<MapExportCompletedEventArgs>(mapService_ExportMapCompleted);
-
-            ////IAsyncResult asyncResult = mapService.BeginExportMap(parameters);
-
-            ////do
-            ////{
-
-            ////} while (!finished);
         }
 
-        ////static void mapService_ExportMapCompleted(object sender, MapExportCompletedEventArgs e)
+        ////[TestMethod]
+        ////public void TestAppConfig()
         ////{
-        ////    using (var stream = e.ResponseStream)
-        ////    {
-        ////        using (FileStream fs = new FileStream("output.png", FileMode.Create))
-        ////        {
-        ////            stream.CopyTo(fs);
-        ////        }
-        ////    }
-        ////    finished = true;
+        ////    string clientId = Settings.Default.ClientId;
+        ////    string clientSecret = Settings.Default.ClientSecret;
+
         ////}
     }
 }
