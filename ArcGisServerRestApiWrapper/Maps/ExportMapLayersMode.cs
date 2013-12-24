@@ -1,5 +1,5 @@
 ﻿
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
     /// <summary>
     /// The types of layer operations for the Export Map operation.

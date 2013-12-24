@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
 	/// <summary>
 	/// Event arguments for when the Map Export operation has completed.

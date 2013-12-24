@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportMapImageFormat.cs" />
-    <Compile Include="ExportMapLayerDefinition.cs" />
-    <Compile Include="ExportMapLayersMode.cs" />
-    <Compile Include="ExportMapLayerTimeOptions.cs" />
-    <Compile Include="ExportMapParameters.cs" />
-    <Compile Include="ExportMapRequestState.cs" />
-    <Compile Include="ExportMapResponseFormat.cs" />
+    <Compile Include="Maps\ExportMapImageFormat.cs" />
+    <Compile Include="Maps\ExportMapLayerDefinition.cs" />
+    <Compile Include="Maps\ExportMapLayersMode.cs" />
+    <Compile Include="Maps\ExportMapLayerTimeOptions.cs" />
+    <Compile Include="Maps\ExportMapParameters.cs" />
+    <Compile Include="Maps\ExportMapRequestState.cs" />
+    <Compile Include="Maps\ExportMapResponseFormat.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="MapExportCompletedEventArgs.cs" />
-    <Compile Include="MapService.cs" />
+    <Compile Include="Maps\MapExportCompletedEventArgs.cs" />
+    <Compile Include="Maps\MapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpatialReference.cs" />
     <Compile Include="TimeUnit.cs" />

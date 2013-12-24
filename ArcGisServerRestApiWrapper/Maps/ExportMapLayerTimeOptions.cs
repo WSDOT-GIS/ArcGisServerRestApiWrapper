@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
 	/// <summary>
 	/// Represents the layer time options of the Export Map operation.

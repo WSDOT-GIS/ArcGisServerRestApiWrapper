@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
 	/// <summary>
 	/// Represents the state of an Export Map request.

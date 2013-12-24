@@ -1,4 +1,4 @@
-﻿namespace Esri.ArcGisServer.Rest
+﻿namespace Esri.ArcGisServer.Rest.Maps
 {
 
 

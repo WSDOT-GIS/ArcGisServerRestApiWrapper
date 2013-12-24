@@ -1,4 +1,4 @@
-﻿namespace Esri.ArcGisServer.Rest
+﻿namespace Esri.ArcGisServer.Rest.Maps
 {
     /// <summary>
     /// Represents the possible image formats of the export map operation.

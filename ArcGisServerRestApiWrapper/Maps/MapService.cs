@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
 	/// <summary>
 	/// A class that represents a map service.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Esri.ArcGisServer.Rest
+namespace Esri.ArcGisServer.Rest.Maps
 {
 	/// <summary>
 	/// Specifies parameters for the export map operation.

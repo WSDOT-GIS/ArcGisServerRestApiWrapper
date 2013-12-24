@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Esri.ArcGisServer.Rest.Maps;
+using System;
 using System.IO;
-using Esri.ArcGisServer.Rest;
 
 namespace WrapperTest
 {
