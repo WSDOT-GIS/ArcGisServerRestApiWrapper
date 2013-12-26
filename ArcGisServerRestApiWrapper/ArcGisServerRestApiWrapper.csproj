@@ -33,6 +33,9 @@
     <DocumentationFile>bin\Release\ArcGisServerRestApiWrapper.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.5\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\AuthenticationService.cs" />
+    <Compile Include="Authentication\GetTokenException.cs" />
+    <Compile Include="Authentication\Token.cs" />
+    <Compile Include="Authentication\TokenErrorInfo.cs" />
     <Compile Include="Maps\ExportMapImageFormat.cs" />
     <Compile Include="Maps\ExportMapLayerDefinition.cs" />
     <Compile Include="Maps\ExportMapLayersMode.cs" />
@@ -63,6 +70,9 @@
     <Compile Include="Route\SolveParameters.cs" />
     <Compile Include="SpatialReference.cs" />
     <Compile Include="TimeUnit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
