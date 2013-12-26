@@ -1,4 +1,5 @@
-﻿using Esri.ArcGisServer.Rest.Maps;
+﻿using Esri.ArcGisServer.Rest.Authentication;
+using Esri.ArcGisServer.Rest.Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
@@ -43,12 +44,29 @@ namespace UnitTests
             }
         }
 
-        ////[TestMethod]
-        ////public void TestAppConfig()
-        ////{
-        ////    string clientId = Settings.Default.ClientId;
-        ////    string clientSecret = Settings.Default.ClientSecret;
+        /// <summary>
+        /// Tests the function that gets a token.
+        /// </summary>
+        [TestMethod]
+        public void TestGetToken()
+        {
+            string clientId = Settings.Default.ClientId;
+            string clientSecret = Settings.Default.ClientSecret;
 
-        ////}
+            var authSvc = new AuthenticationService();
+            Token token = null;
+            try
+            {
+                token = authSvc.GetToken(clientId, clientSecret);
+            }
+            catch (GetTokenException ex)
+            {
+                Assert.Fail("An exception occured.{0}", ex.ToString());
+            }
+            Assert.IsNotNull(token);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccessToken));
+            Assert.IsTrue(token.IsValid);
+
+        }
     }
 }
