@@ -70,6 +70,8 @@
     <Compile Include="Route\NetworkAnalystUnits.cs" />
     <Compile Include="Route\OutputLineOptions.cs" />
     <Compile Include="Route\RouteService.cs" />
+    <Compile Include="Route\SolveErrorResponse.cs" />
+    <Compile Include="Route\SolveException.cs" />
     <Compile Include="Route\SolveParameters.cs" />
     <Compile Include="Route\SolveResult.cs" />
     <Compile Include="SpatialReference.cs" />

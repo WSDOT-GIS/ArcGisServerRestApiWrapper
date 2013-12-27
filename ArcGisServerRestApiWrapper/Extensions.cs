@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Esri.ArcGisServer.Rest
 {
@@ -24,6 +27,34 @@ namespace Esri.ArcGisServer.Rest
 		public static long ToJavaScriptTicks(this DateTime dateTime)
 		{
 			return (dateTime - _jsBaseTime).Ticks / 10000;
+		}
+
+		/// <summary>
+		/// Converts a double[][] into a list of points. Coordinates in the point are separated by commas (,) , points are separated by a semicolon (;).
+		/// </summary>
+		/// <typeparam name="T">An enumeration of <see cref="double"/></typeparam>
+		/// <param name="points">A jagged array of doubles.</param>
+		/// <returns></returns>
+		public static string ToListString<T>(this IEnumerable<T> points) where T: IEnumerable<double>
+		{
+			var sb = new StringBuilder();
+			for (int i = 0, l = points.Count(); i < l; i++)
+			{
+				if (i > 0)
+				{
+					sb.Append("; ");
+				}
+				var coords = points.ElementAt(i);
+				for (int j = 0, jl = coords.Count(); j < jl; j++)
+				{
+					if (j > 0)
+					{
+						sb.Append(",");
+					}
+					sb.Append(coords.ElementAt(j));
+				}
+			}
+			return sb.ToString();
 		}
 	}
 }

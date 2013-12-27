@@ -1,4 +1,5 @@
 ﻿using Esri.ArcGisServer.Rest.Authentication;
+using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,7 @@ namespace Esri.ArcGisServer.Rest.Route
         /// <param name="parameters"></param>
         /// <param name="token"></param>
         /// <returns></returns>
+        /// <exception cref="SolveException"></exception>
         public object Solve(SolveParameters parameters, Token token)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Uri);
@@ -47,8 +49,19 @@ namespace Esri.ArcGisServer.Rest.Route
                 }
             }
 
+            // If the request returned an error, throw an exception.
+            var errorResponse = JsonSerializer.DeserializeFromString<SolveErrorResponse>(json);
+            if (errorResponse.error != null)
+            {
+                throw new SolveException(errorResponse);
+            }
 
-            throw new NotImplementedException();
+            SolveResult solveResult = null;
+
+            solveResult = JsonSerializer.DeserializeFromString<SolveResult>(json);
+
+
+            return solveResult;
         }
     }
 }
