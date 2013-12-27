@@ -15,6 +15,34 @@ namespace UnitTests
     [TestClass]
     public class UnitTest1
     {
+        private Token _token;
+
+        public Token Token
+        {
+            get
+            {
+                if (_token == null || _token.IsValid)
+                {
+                    string clientId = Settings.Default.ClientId;
+                    string clientSecret = Settings.Default.ClientSecret;
+
+                    // Make sure the default values aren't still in place. (I.e., app.config has not been created or customized.)
+                    if (string.Compare(clientId, "PutYourClientIdHere", true) == 0)
+                    {
+                        Assert.Inconclusive("A ClientId value has not been specified in app.config.");
+                    }
+                    else if (string.Compare(clientSecret, "PutYourClientSecretHere", true) == 0)
+                    {
+                        Assert.Inconclusive("A ClientSecret value has not been specified in app.config.");
+                    }
+
+                    var authSvc = new AuthenticationService();
+                    _token = authSvc.GetToken(clientId, clientSecret);
+                }
+                return _token;
+            }
+        }
+
         [TestProperty("mapServiceUrl", "http://www.wsdot.wa.gov/geosvcs/ArcGIS/rest/services/Shared/WebBaseMapWebMercator/MapServer")]
         [TestMethod]
         public void TestExportMap()
@@ -53,28 +81,7 @@ namespace UnitTests
         [TestMethod]
         public void TestGetToken()
         {
-            string clientId = Settings.Default.ClientId;
-            string clientSecret = Settings.Default.ClientSecret;
-
-            // Make sure the default values aren't still in place. (I.e., app.config has not been created or customized.)
-            if (string.Compare(clientId, "PutYourClientIdHere", true) == 0) {
-                Assert.Inconclusive("A ClientId value has not been specified in app.config.");
-            }
-            else if (string.Compare(clientSecret, "PutYourClientSecretHere", true) == 0)
-            {
-                Assert.Inconclusive("A ClientSecret value has not been specified in app.config.");
-            }
-
-            var authSvc = new AuthenticationService();
-            Token token = null;
-            try
-            {
-                token = authSvc.GetToken(clientId, clientSecret);
-            }
-            catch (GetTokenException ex)
-            {
-                Assert.Fail("An exception occured.{0}", ex.ToString());
-            }
+            Token token = this.Token;
             Assert.IsNotNull(token);
             Assert.IsFalse(string.IsNullOrWhiteSpace(token.AccessToken));
             Assert.IsTrue(token.IsValid);
