@@ -37,24 +37,8 @@ namespace Esri.ArcGisServer.Rest
 		/// <returns></returns>
 		public static string ToListString<T>(this IEnumerable<T> points) where T: IEnumerable<double>
 		{
-			var sb = new StringBuilder();
-			for (int i = 0, l = points.Count(); i < l; i++)
-			{
-				if (i > 0)
-				{
-					sb.Append("; ");
-				}
-				var coords = points.ElementAt(i);
-				for (int j = 0, jl = coords.Count(); j < jl; j++)
-				{
-					if (j > 0)
-					{
-						sb.Append(",");
-					}
-					sb.Append(coords.ElementAt(j));
-				}
-			}
-			return sb.ToString();
+			return string.Join(";", from coordinates in points 
+									select string.Join(",", coordinates));
 		}
 	}
 }
