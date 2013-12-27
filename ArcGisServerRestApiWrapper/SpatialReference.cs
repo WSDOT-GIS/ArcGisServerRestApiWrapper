@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Esri.ArcGisServer.Rest
 {
 	/// <summary>
