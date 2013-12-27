@@ -15,9 +15,6 @@ namespace Esri.ArcGisServer.Rest.Route
         // TODO: Figure out bettery types for IEnumerable<object> properties.
 
         public IEnumerable<object> stops { get; set; }
-
-        public string token { get; set; }
-
         public DateTime? startTime { get; set; }
         public bool? startTimeIsUTC { get; set; }
         public bool? findBestSequence { get; set; }
@@ -51,5 +48,50 @@ namespace Esri.ArcGisServer.Rest.Route
         public int? outSR { get; set; }
         public float? outputGeometryPrecision { get; set; }
         public MeasureUnits? outputGeometryPrecisionUnits { get; set; }
+
+        public string ToQueryString()
+        {
+            var sBuilder = new StringBuilder();
+
+            if (this.stops != null && stops.Count() > 1) {
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+
+            if (this.startTime != null) { }
+            if (this.startTimeIsUTC != null) { }
+            if (this.findBestSequence != null) { }
+            if (this.preserveFirstStop != null) { }
+            if (this.preserveLastStop != null) { }
+            if (this.useTimeWindows != null) { }
+            if (this.restrictUTurns != null) { }
+            if (this.useHierarchy != null) { }
+            if (this.impedanceAttributeName != null) { } // Valid values are TravelTime, Miles, Kilometers.
+            if (this.accumulateAttributeNames != null) { }
+            if (this.restrictionAttributeNames != null) { }
+            if (this.attributeParameterValues != null) { }
+            if (this.barriers != null) { }
+            if (this.polylineBarriers != null) { }
+            if (this.polygonBarriers != null) { }
+            if (this.returnDirections != null) { }
+            if (this.directionsLanguage != null) { }
+            if (this.directionsOutputType != null) { }
+            if (this.directionsStyleName != null) { }
+            if (this.directionsLengthUnits != null) { }
+            if (this.returnRoutes != null) { }
+            if (this.outputLines != null) { }
+            if (this.returnStops != null) { }
+            if (this.returnBarriers != null) { }
+            if (this.returnPolylineBarriers != null) { }
+            if (this.returnPolygonBarriers != null) { }
+            if (this.ignoreInvalidLocations != null) { }
+            if (this.outSR != null) { }
+            if (this.outputGeometryPrecision != null) { }
+            if (this.outputGeometryPrecisionUnits != null) { }
+
+            throw new NotImplementedException();
+        }
     }
 }

@@ -15,6 +15,10 @@ namespace Esri.ArcGisServer.Rest.Authentication
     {
         public string Url { get; set; }
         
+        /// <summary>
+        /// Creates a new instance of the <see cref="AuthenticationService"/>.
+        /// </summary>
+        /// <param name="url"></param>
         public AuthenticationService(string url=null)
         {
             this.Url = string.IsNullOrWhiteSpace(url) ? "https://www.arcgis.com/sharing/oauth2/token" : url;
@@ -23,11 +27,11 @@ namespace Esri.ArcGisServer.Rest.Authentication
         /// <summary>
         /// Gets a token.
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="clientSecret"></param>
-        /// <param name="expirationInMinutes"></param>
-        /// <exception cref="GetTokenException"></exception>
-        /// <returns></returns>
+        /// <param name="clientId">OAuth ClientId</param>
+        /// <param name="clientSecret">OAuth ClientSecret</param>
+        /// <param name="expirationInMinutes">Optional. Specify how many minutes until the token expires.</param>
+        /// <exception cref="GetTokenException">Thrown if the request for the token fails.</exception>
+        /// <returns>Returns a <see cref="Token"/>.</returns>
         public Token GetToken(string clientId, string clientSecret, int? expirationInMinutes=null)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Url);

@@ -49,6 +49,10 @@
     <Compile Include="Authentication\GetTokenException.cs" />
     <Compile Include="Authentication\Token.cs" />
     <Compile Include="Authentication\TokenErrorInfo.cs" />
+    <Compile Include="Feature.cs" />
+    <Compile Include="FeatureSet.cs" />
+    <Compile Include="Geometry.cs" />
+    <Compile Include="IHasZM.cs" />
     <Compile Include="Maps\ExportMapImageFormat.cs" />
     <Compile Include="Maps\ExportMapLayerDefinition.cs" />
     <Compile Include="Maps\ExportMapLayersMode.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="Route\OutputLineOptions.cs" />
     <Compile Include="Route\RouteService.cs" />
     <Compile Include="Route\SolveParameters.cs" />
+    <Compile Include="Route\SolveResult.cs" />
     <Compile Include="SpatialReference.cs" />
     <Compile Include="TimeUnit.cs" />
   </ItemGroup>

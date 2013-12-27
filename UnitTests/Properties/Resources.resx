@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SampleSolveResults" xml:space="preserve">
+    <value>{
+    "directions": [
+        {
+            "routeId": 1,
+            "routeName": "Location 1 - Location 2",
+            "summary": {
+                "totalLength": 0.547181119992593,
+                "totalTime": 0.916666666666667,
+                "totalDriveTime": 0.932502535171807,
+                "envelope": {
+                    "xmin": -122.408067,
+                    "ymin": 37.7820000000001,
+                    "xmax": -122.402715,
+                    "ymax": 37.785718,
+                    "spatialReference": {
+                        "wkid": 4326
+                    }
+                }
+            },
+            "features": [
+                {
+                    "attributes": {
+                        "length": 0,
+                        "time": 0,
+                        "text": "Start at Location 1",
+                        "ETA": -2209161600000,
+                        "maneuverType": "esriDMTDepart"
+                    },
+                    "compressedGeometry": "+1m91-6fki2+202vh+0+0"
+                },
+                {
+                    "attributes": {
+                        "length": 0.0250344870524692,
+                        "time": 0.0426480025053024,
+                        "text": "Go northwest on 5Th St toward Market St/Cyril Magnin St",
+                        "ETA": -2209161600000,
+                        "maneuverType": "esriDMTStraight"
+                    },
+                    "compressedGeometry": "+1m91-6fki2+202vh-h+f"
+                },
+                {
+                    "attributes": {
+                        "length": 0.168514039307211,
+                        "time": 0.287470433861017,
+                        "text": "Turn right on Market St",
+                        "ETA": -2209161597441,
+                        "maneuverType": "esriDMTTurnRight"
+                    },
+                    "compressedGeometry": "+1m91-6fkij+20300+3p+2v"
+                },
+                {
+                    "attributes": {
+                        "length": 0.24456036107712,
+                        "time": 0.415655565448105,
+                        "text": "Bear right on 4th St",
+                        "ETA": -2209161580193,
+                        "maneuverType": "esriDMTBearRight"
+                    },
+                    "compressedGeometry": "+1m91-6fkeq+2032v+7-1+7-4+2q-2b+28-1o"
+                },
+                {
+                    "attributes": {
+                        "length": 0.109072232555793,
+                        "time": 0.186728533357382,
+                        "text": "Turn right on Howard St",
+                        "ETA": -2209161555254,
+                        "maneuverType": "esriDMTTurnRight"
+                    },
+                    "compressedGeometry": "+1m91-6fk9a+202un-2e-1u"
+                },
+                {
+                    "attributes": {
+                        "length": 0,
+                        "time": 0,
+                        "text": "Finish at Location 2, on the left",
+                        "ETA": -2209161544050,
+                        "maneuverType": "esriDMTStop"
+                    },
+                    "compressedGeometry": "+1m91-6fkbo+202sp+0+0"
+                }
+            ]
+        }
+    ],
+    "routes": {
+        "spatialReference": {
+            "wkid": 4326
+        },
+        "features": [
+            {
+                "attributes": {
+                    "ObjectID": 1,
+                    "Name": "Location 1 - Location 2",
+                    "FirstStopID": 1,
+                    "LastStopID": 2,
+                    "StopCount": 2,
+                    "Total_Time": 0.932502535171807,
+                    "TotalWait_Time": 0,
+                    "TotalViolation_Time": 0,
+                    "StartTime": -2209161600000,
+                    "EndTime": -2209161544050,
+                    "Shape_Length": 0.00900541548002667
+                },
+                "geometry": {
+                    "paths": [
+                        [
+                            [
+                                -122.407752312,
+                                37.7837382120001
+                            ],
+                            [
+                                -122.408067,
+                                37.7839990000001
+                            ],
+                            [
+                                -122.407574,
+                                37.784392
+                            ],
+                            [
+                                -122.407333,
+                                37.7845800000001
+                            ],
+                            [
+                                -122.406309,
+                                37.785401
+                            ],
+                            [
+                                -122.405982003,
+                                37.785652998
+                            ],
+                            [
+                                -122.405982,
+                                37.785653
+                            ],
+                            [
+                                -122.405883,
+                                37.785718
+                            ],
+                            [
+                                -122.405821,
+                                37.7857070000001
+                            ],
+                            [
+                                -122.405764,
+                                37.785693
+                            ],
+                            [
+                                -122.405705,
+                                37.785668
+                            ],
+                            [
+                                -122.405626,
+                                37.7856180000001
+                            ],
+                            [
+                                -122.40523,
+                                37.7853030000001
+                            ],
+                            [
+                                -122.405085,
+                                37.7851810000001
+                            ],
+                            [
+                                -122.405084995,
+                                37.7851809960001
+                            ],
+                            [
+                                -122.405085,
+                                37.7851810000001
+                            ],
+                            [
+                                -122.404784,
+                                37.7849380000001
+                            ],
+                            [
+                                -122.404271,
+                                37.784501
+                            ],
+                            [
+                                -122.404239,
+                                37.784477
+                            ],
+                            [
+                                -122.4042,
+                                37.7844470000001
+                            ],
+                            [
+                                -122.404006,
+                                37.7842830000001
+                            ],
+                            [
+                                -122.403736,
+                                37.7840660000001
+                            ],
+                            [
+                                -122.403736,
+                                37.7840660000001
+                            ],
+                            [
+                                -122.403736,
+                                37.7840660000001
+                            ],
+                            [
+                                -122.403184,
+                                37.7836300000001
+                            ],
+                            [
+                                -122.402715,
+                                37.783265
+                            ],
+                            [
+                                -122.403146,
+                                37.782924
+                            ],
+                            [
+                                -122.404116347,
+                                37.7821449080001
+                            ]
+                        ]
+                    ]
+                }
+            }
+        ]
+    },
+    "messages": []
+}</value>
+  </data>
+</root>
