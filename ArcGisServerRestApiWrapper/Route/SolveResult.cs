@@ -23,7 +23,7 @@ namespace Esri.ArcGisServer.Rest.Route
         public string description { get; set; }
     }
 
-    public class Direction: IHasZM
+    public class Direction
     {
         public int routeId { get; set; }
         public string routeName { get; set; }
@@ -38,7 +38,7 @@ namespace Esri.ArcGisServer.Rest.Route
         public double totalLength { get; set; }
         public double totalTime { get; set; }
         public double totalDriveTime { get; set; }
-        public Envelope envelope { get; set; }
+        public Geometry envelope { get; set; }
     }
 
 

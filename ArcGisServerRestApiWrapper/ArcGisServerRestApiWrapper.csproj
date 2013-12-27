@@ -52,7 +52,6 @@
     <Compile Include="Feature.cs" />
     <Compile Include="FeatureSet.cs" />
     <Compile Include="Geometry.cs" />
-    <Compile Include="IHasZM.cs" />
     <Compile Include="Maps\ExportMapImageFormat.cs" />
     <Compile Include="Maps\ExportMapLayerDefinition.cs" />
     <Compile Include="Maps\ExportMapLayersMode.cs" />

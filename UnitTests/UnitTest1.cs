@@ -109,12 +109,14 @@ namespace UnitTests
             Assert.IsTrue(solveResult.directions.Length == 1, "There should be a single element in \"directions\".");
             var dir = solveResult.directions[0];
             Assert.AreEqual(dir.routeId, 1, "\"routeId\" should be 1.");
-            Assert.IsInstanceOfType(dir.summary.envelope, typeof(Envelope));
+            Assert.IsInstanceOfType(dir.summary.envelope, typeof(Geometry));
+            Assert.IsTrue(dir.summary.envelope.GetType() == GeometryType.Envelope);
             Assert.AreEqual(dir.features.Length, 6, "There should be six features.");
             Assert.IsInstanceOfType(solveResult.routes, typeof(FeatureSet), "\"routes\" should be a FeatureSet.");
             Assert.IsTrue(solveResult.routes.features.Length == 1, "\"routes.features\" should contain a single feature.");
             Feature feature = solveResult.routes.features[0];
-            Assert.IsInstanceOfType(feature.geometry, typeof(Polyline), "route feature should be a Polyline.");
+            Assert.IsInstanceOfType(feature.geometry, typeof(Geometry), "route feature should be a Polyline.");
+            Assert.AreEqual(feature.geometry.GetType(), GeometryType.Polyline, "route feature should be a Polyline.");
         }
     }
 }

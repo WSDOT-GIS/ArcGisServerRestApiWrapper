@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Esri.ArcGisServer.Rest
 {
-    public class FeatureSet: IHasZM
+    public class FeatureSet
     {
         public SpatialReference spatialReference { get; set; }
         public bool hasZ { get; set; }
