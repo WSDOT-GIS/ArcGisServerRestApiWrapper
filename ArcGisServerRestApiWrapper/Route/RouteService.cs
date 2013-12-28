@@ -15,7 +15,7 @@ namespace Esri.ArcGisServer.Rest.Route
 
         public RouteService(string url = "http://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/")
         {
-
+            this.Uri = new Uri(url);
         }
 
         /// <summary>
@@ -25,13 +25,14 @@ namespace Esri.ArcGisServer.Rest.Route
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="SolveException"></exception>
-        public object Solve(SolveParameters parameters, Token token)
+        public SolveResult Solve(SolveParameters parameters, Token token)
         {
             UriBuilder uriBuilder = new UriBuilder(this.Uri);
+            uriBuilder.Path += "solve";
             string qs = parameters.ToQueryString();
             if (token != null)
             {
-                qs = string.Format("{0}&token={1}", qs, token.AccessToken);
+                qs = string.Format("token={1}&{0}&f=json", qs, token.AccessToken);
             }
             uriBuilder.Query = qs;
 

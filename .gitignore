@@ -4,3 +4,4 @@ obj
 *.user
 /UnitTests/App.config
 /packages
+/TestResults

@@ -108,7 +108,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void DeserializeSolveResults()
+        public void TestDeserializeSolveResults()
         {
             // Get the Sample JSON from the assembly resources. This sample result comes from http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/.
             string json = Resources.SampleSolveResults;
@@ -124,6 +124,22 @@ namespace UnitTests
             Feature feature = solveResult.routes.features[0];
             Assert.IsInstanceOfType(feature.geometry, typeof(Geometry), "route feature should be a Polyline.");
             Assert.AreEqual(feature.geometry.GetType(), GeometryType.Polyline, "route feature should be a Polyline.");
+        }
+
+        [TestMethod]
+        public void TestSolve()
+        {
+            var svc = new RouteService();
+            var solveParameters = new SolveParameters
+            {
+                stops = new double[][] { 
+                    new double[] {-122.4079,37.78356},
+                    new double[] {-122.404,37.782}
+                }
+            };
+            SolveResult result = svc.Solve(solveParameters, this.Token);
+            Assert.IsInstanceOfType(result, typeof(SolveResult));
+            Assert.IsNotNull(result.directions, "Directions should not be null");
         }
     }
 }
