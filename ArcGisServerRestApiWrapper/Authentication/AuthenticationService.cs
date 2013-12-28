@@ -12,15 +12,18 @@ namespace Esri.ArcGisServer.Rest.Authentication
     /// </summary>
     public class AuthenticationService
     {
+        /// <summary>
+        /// The URL of the service.
+        /// </summary>
         public string Url { get; set; }
         
         /// <summary>
         /// Creates a new instance of the <see cref="AuthenticationService"/>.
         /// </summary>
         /// <param name="url"></param>
-        public AuthenticationService(string url=null)
+        public AuthenticationService(string url="https://www.arcgis.com/sharing/oauth2/token")
         {
-            this.Url = string.IsNullOrWhiteSpace(url) ? "https://www.arcgis.com/sharing/oauth2/token" : url;
+            this.Url = url;
         }
 
         /// <summary>
