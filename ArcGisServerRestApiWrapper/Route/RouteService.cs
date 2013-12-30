@@ -6,6 +6,9 @@ using System.Net;
 
 namespace Esri.ArcGisServer.Rest.Route
 {
+    /// <summary>
+    /// Provides access to an ArcGIS Server route (NAServer) service.
+    /// </summary>
     public class RouteService
     {
         /// <summary>
@@ -13,6 +16,10 @@ namespace Esri.ArcGisServer.Rest.Route
         /// </summary>
         public Uri Uri { get; set; }
 
+        /// <summary>
+        /// Creates a new instance.
+        /// </summary>
+        /// <param name="url">The URL of the service. You can omit this parameter if you are using the default.</param>
         public RouteService(string url = "http://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/")
         {
             this.Uri = new Uri(url);

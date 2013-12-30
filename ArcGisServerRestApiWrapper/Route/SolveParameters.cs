@@ -6,15 +6,40 @@ using System.Text;
 
 namespace Esri.ArcGisServer.Rest.Route
 {
-    // See http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/
-
     /// <summary>
-    /// 
+    /// Parameters to pass to the Solve REST endpoint of the Route service. <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/>
     /// </summary>
     public class SolveParameters
     {
+        /// <summary>
+        /// <para>Use this parameter to specify two or more locations between which the route is to be found.</para>
+        /// <para>Use this (instead of <see cref="SolveParameters.stopsAsFeatures"/> or <see cref="SolveParameters.stopsAsUrl"/>)
+        /// if you need to specify only stop point geometries in the default spatial reference WGS84 such as 
+        /// the longitude and latitude values.</para>
+        /// <para>
+        /// One of the following values must be specified: <see cref="SolveParameters.stops"/>, 
+        /// <see cref="SolveParameters.stopsAsFeatures"/>, 
+        /// <see cref="SolveParameters.stopsAsUrl"/>.
+        /// </para>
+        /// </summary>
         public IEnumerable<double[]> stops { get; set; }
+        /// <summary>
+        /// <para>Use this parameter to specify two or more locations between which the route is to be found.</para>
+        /// <para>
+        /// One of the following values must be specified: <see cref="SolveParameters.stops"/>, 
+        /// <see cref="SolveParameters.stopsAsFeatures"/>, 
+        /// <see cref="SolveParameters.stopsAsUrl"/>.
+        /// </para>
+        /// </summary>
         public FeatureSet stopsAsFeatures { get; set; }
+        /// <summary>
+        /// Use this parameter to specify two or more locations between which the route is to be found.
+        /// <para>Specify a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set.</para>
+        /// <para>One of the following values must be specified: <see cref="SolveParameters.stops"/>, 
+        /// <see cref="SolveParameters.stopsAsFeatures"/>, 
+        /// <see cref="SolveParameters.stopsAsUrl"/>.
+        /// </para>
+        /// </summary>
         public string stopsAsUrl { get; set; }
 
         public DateTime? startTime { get; set; }

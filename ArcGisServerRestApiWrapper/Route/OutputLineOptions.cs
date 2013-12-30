@@ -1,5 +1,8 @@
 ﻿namespace Esri.ArcGisServer.Rest.Route
 {
+    /// <summary>
+    /// For use with <see cref="SolveParameters.outputLines"/>.
+    /// </summary>
     public enum OutputLineOptions
     {
         ///<summary>Return the exact shape of the resulting route that is based on the underlying streets. This is the default value.</summary>

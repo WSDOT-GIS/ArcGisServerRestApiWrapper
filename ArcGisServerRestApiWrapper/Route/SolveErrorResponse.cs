@@ -6,6 +6,9 @@ namespace Esri.ArcGisServer.Rest.Route
     /// </summary>
     public class SolveErrorResponse
     {
+        /// <summary>
+        /// Information about the error.
+        /// </summary>
         public SolveErrorInfo error { get; set; }
     }
 
@@ -14,8 +17,17 @@ namespace Esri.ArcGisServer.Rest.Route
     /// </summary>
     public class SolveErrorInfo
     {
+        /// <summary>
+        /// HTTP error code.
+        /// </summary>
         public int code { get; set; }
+        /// <summary>
+        /// Basic error message.
+        /// </summary>
         public string message { get; set; }
+        /// <summary>
+        /// Provides detailed information about the error.
+        /// </summary>
         public string[] details { get; set; }
     }
 
