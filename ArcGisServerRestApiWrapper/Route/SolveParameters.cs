@@ -42,47 +42,135 @@ namespace Esri.ArcGisServer.Rest.Route
         /// </summary>
         public string stopsAsUrl { get; set; }
 
-        public DateTime? startTime { get; set; }
-        public bool? startTimeIsUTC { get; set; }
-        public bool? findBestSequence { get; set; }
-        public bool? preserveFirstStop { get; set; }
-        public bool? preserveLastStop { get; set; }
-        public bool? useTimeWindows { get; set; }
-        public esriNFSB? restrictUTurns { get; set; }
-        public bool? useHierarchy { get; set; }
         /// <summary>
-        /// If provided, valid value names are: TravelTime, Miles, Kilometers.
+        /// Start time.
+        /// </summary>
+        public DateTime? startTime { get; set; }
+        /// <summary>Indicates if startTime is UTC.</summary>
+        public bool? startTimeIsUTC { get; set; }
+        /// <summary>
+        /// <para>Use this parameter to specify if the service should reorder stops to find the optimized route. 
+        /// If the parameter value is false, the service returns a route that visits stops in the order you define. 
+        /// If the parameter value is true, the service finds the best order to visit the stops. 
+        /// The service will account for a variety of variables so that the total travel distance or travel time for the route is minimized. 
+        /// You can elect to preserve the origin and/or the destination stops while allowing the service to reorder intermediary stops by setting 
+        /// preserveFirstStop and preserveLastStop parameters. The default value for this parameter is false.</para>
+        /// <para>Caution: A true parameter value causes the service to switch from solving a shortest-path 
+        /// problem to a traveling salesperson problem (TSP). Solving a TSP is computer-intensive operation and incurs 
+        /// additional service credits per route.
+        /// </summary>
+        public bool? findBestSequence { get; set; }
+        /// <summary>
+        /// Use this parameter to indicate whether the service should keep the first stop fixed when reordering the stops. The possible parameter values are true, or false. The default value is true. This parameter is applicable only if findBestSequence parameter value is true.
+        /// </summary>
+        public bool? preserveFirstStop { get; set; }
+        /// <summary>
+        /// Use this parameter to indicate whether the service should keep the last stop fixed when reordering the stops. The possible parameter values are true, or false. The default value is true. This parameter is applicable only if findBestSequence parameter value is true.
+        /// </summary>
+        public bool? preserveLastStop { get; set; }
+        /// <summary>
+        /// Use this parameter to indicate if the service should consider time windows specified on the stops when finding the best route. The possible parameter values are true, or false. The time windows are specified on stops using the TimeWindowStart and TimeWindowEnd attributes. 
+        /// </summary>
+        public bool? useTimeWindows { get; set; }
+        /// <summary>
+        /// Use this parameter to restrict or permit the route from making U-turns at junctions. In order to understand the parameter values, keep in mind that a junction is a point where only two streets intersect each other. If three or more streets intersect at a point, it is called as an intersection. The end of a culs-de-sac is called as the dead-end.
+        /// </summary>
+        public esriNFSB? restrictUTurns { get; set; }
+        /// <summary>
+        /// <para>Use this parameter to specify if hierarchy should be used when finding the route. Using a hierarchy results in the service preferring higher-order streets such as freeways to lower-order streets such as local roads. A parameter value of true indicates that the service should use hierarchy and can be used to simulate the driver preference of traveling on freeways instead of local roads even if that means a longer trip. This is especially true when finding long distance routes, as the driver will usually prefer to travel on freeways as much as possible and avoid the local roads. Using hierarchy is computationally faster, especially for long distance routes, as the service has to select the best route from a relatively smaller subset of streets. A parameter value of false indicates that the service should consider all the streets and not prefer higher-order streets when finding the route. This is often used when finding short-distance routes like routes within a city.</para>
+        /// <para>Caution: The service automatically reverts to using hierarchy if the straight-line distance between the first two stops is greater than 50 miles (80.46 kilometers) even if you have specified to find the route without using hierarchy.</para>
+        /// </summary>
+        public bool? useHierarchy { get; set; }
+        
+        /// <summary>
+        /// Use this parameter to specify if you want to find the quickest route that minimizes the travel time or the shortest route that minimizes the travel distance between the stops. The parameter can have the following values:
+        /// <list type="table">
+        /// <item><term>TravelTime</term><description>Specifies that the travel time between the stops should be minimized. The total travel time between the stops is calculated in minutes. This is the default value.</description></item>
+        /// <item><term>Miles</term><description>Specifies that the travel distance between the stops should be minimized. The total distance between the stops is calculated in miles.</description></item>
+        /// <item><term>Kilometers</term><description>Specifies that the travel distance between the stops should be minimized. The total distance between the stops is calculated in kilometers.</description></item>
+        /// </list>
         /// </summary>
         public string impedanceAttributeName { get; set; }
+
+        /// <summary>
+        /// <para>Use this parameter to specify if the service should accumulate values other than the value specified as the impedanceAttributeName when finding the best route. For example, if your impedanceAttributeName is set to TravelTime, the total travel time for the route will be calculated by the service. However, if you also want to calculate the total distance of the route in miles, you can specify Miles as the value for the accumulateAttributeNames parameter.</para>
+        /// <para>The parameter value should be specified as a comma separated list of names. The possible parameter values are same as the impedanceAttributeName parameter. For example, accumulateAttributeNames=Miles,Kilometers indicates that the total cost of the route should also be calculated in miles and kilometers. This is also the default value for this parameter.</para>
+        /// <para>Note: The values specified for the accumulateAttributeNames parameter are purely for reference. The service only uses the value specified for the impedanceAttributeName parameter to find the best route.</para>
+        /// </summary>
         public IEnumerable<string> accumulateAttributeNames { get; set; }
+
+
+        /// <summary>
+        /// <para>Use this parameter to specify which restrictions should be honored by the service when finding the best route. 
+        /// A restriction represents a driving preference or requirement. In most cases, restrictions cause roads to be prohibited, 
+        /// but they can also cause them to be avoided or preferred. For instance, using an Avoid Toll Roads restriction will result 
+        /// in a route that will include toll roads only when it is absolutely required to travel on toll roads in order to visit a stop.
+        /// Height Restriction makes it possible to route around any clearances that are lower than the height of your vehicle. 
+        /// If you are carrying corrosive materials on your vehicle, using the Any Hazmat Prohibited restriction prevents hauling the
+        /// materials along roads where it is marked as illegal to do so.</para>
+        /// <para>The parameter value is specified as list of restriction names. 
+        /// For example, the default value for this parameter is 
+        /// restritionAttributeNames=Avoid Carpool Roads, Avoid Express Lanes, Avoid Gates, Avoid Private Roads, Avoid Unpaved Roads, Driving an Automobile, Roads Under Construction Prohibited, Through Traffic Prohibited. 
+        /// A value of none indicates that no restrictions should be used when finding the best route. 
+        /// A list of possible values can be found at <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/>.
+        /// </para>
+        /// </summary>
         public IEnumerable<string> restrictionAttributeNames { get; set; }
+
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public IEnumerable<AttributeParameterValue> attributeParameterValues { get; set; }
 
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public IEnumerable<double[]> barriers { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public FeatureSet barriersAsPointFeatures { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public FeatureSet polylineBarriers { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public FeatureSet polygonBarriers { get; set; }
 
 
+        /// <summary>Use this parameter to specify if the service should generate driving directions between the stops. The possible values for this parameter are true, or false. A true value indicates that the directions will be generated and configured based on the values for the directionsLanguage, directionsOutputType, directionsStyleName, and directionsLengthUnits parameters. The directions are available in the directions property of the JSON response. The default value for the returnDirections parameter is true.</summary>
         public bool? returnDirections { get; set; }
+        /// <summary>Use this parameter to specify the language that should be used when generating driving directions. This parameter is used only when the returnDirections parameter is set to true.
+        /// <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public string directionsLanguage { get; set; }
+
+        /// <summary>
+        /// Use this parameter to define the content and verbosity of the driving directions. This parameter is used only when the returnDirections parameter is set to true. The default value is esriDOTStandard.
+        /// </summary>
         public DirectionsOutputType? directionsOutputType { get; set; }
         /// <summary>
         /// Valid values are "NA Desktop" or "NA Navigation"
         /// </summary>
         public string directionsStyleName { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public NetworkAnalystUnits? directionsLengthUnits { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? returnRoutes { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public OutputLineOptions? outputLines { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? returnStops { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? returnBarriers { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? returnPolylineBarriers { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? returnPolygonBarriers { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public bool? ignoreInvalidLocations { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public int? outSR { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public float? outputGeometryPrecision { get; set; }
+        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public MeasureUnits? outputGeometryPrecisionUnits { get; set; }
 
+        /// <summary>
+        /// Converts this object into a query string for use with the REST endpoint.
+        /// </summary>
+        /// <returns></returns>
         public string ToQueryString()
         {
             var sBuilder = new StringBuilder();
