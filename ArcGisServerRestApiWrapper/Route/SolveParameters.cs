@@ -141,13 +141,32 @@ namespace Esri.ArcGisServer.Rest.Route
         /// </summary>
         public DirectionsOutputType? directionsOutputType { get; set; }
         /// <summary>
-        /// Valid values are "NA Desktop" or "NA Navigation"
+        /// Use this parameter to specify the name of the formatting style for the directions. The default value is NA Desktop.
+        /// This parameter is used only when the returnDirections parameter is set to true. The parameter can be specified using the following values:
+        /// <list type="table">
+        /// <item><term>NA Desktop</term><description>Generates turn-by-turn directions suitable for printing.</description></item>
+        /// <item><term>NA Navigation</term><description>Generates turn-by-turn directions designed for an in-vehicle navigation device.</description></item>
+        /// </list>
         /// </summary>
         public string directionsStyleName { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// Use this parameter to specify the units for displaying travel distance in the driving directions. This parameter is used only when the returnDirections parameter is set to true. The parameter can be specified using one of the values: esriNAUCentimeters, esriNAUDecimalDegrees, esriNAUDecimeters, esriNAUFeet, esriNAUInches, esriNAUKilometers, esriNAUMeters, esriNAUMiles, esriNAUMillimeters, esriNAUNauticalMiles, esriNAUPoints, esriNAUYards. The default value is esriNAUKilometers.
+        /// </summary>
         public NetworkAnalystUnits? directionsLengthUnits { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify if the service should return routes. The possible values for this parameter are true, or false. 
+        /// A true value indicates that the routes will be generated and the shape of the routes depends on the value for the outputLines parameter. 
+        /// The routes are available in the routes property of the JSON response. The default value for the returnRoutes parameter is true.</para>
+        /// <para>Tip: There are certain cases when it is not desirable to use a value of true for returnRoutes parameter. 
+        /// For example, if your application has to display only the driving directions between the stops, 
+        /// it is sufficient to just set the returnDirections parameter to true to get the desired result. 
+        /// Setting the returnRoutes parameter to true will not provide any additional information and will increase the overall response size 
+        /// which may not be suitable for certain applications such as those running on mobile devices with low bandwidth data connections.</para>
+        /// </summary>
         public bool? returnRoutes { get; set; }
+
         /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
         public OutputLineOptions? outputLines { get; set; }
         /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
