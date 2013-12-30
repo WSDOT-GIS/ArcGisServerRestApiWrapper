@@ -230,7 +230,7 @@ namespace Esri.ArcGisServer.Rest.Route
             {
                 sBuilder.AppendFormat("stops={0}", this.stops.ToListString());
             }
-            else if (this.stopsAsFeatures != null && stops.Count() > 1)
+            else if (this.stopsAsFeatures != null)
             {
                 sBuilder.AppendFormat("stops={0}", JsonSerializer.SerializeToString(this.stopsAsFeatures));
             }

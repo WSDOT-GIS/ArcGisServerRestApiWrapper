@@ -117,13 +117,13 @@ namespace UnitTests
             var dir = solveResult.directions[0];
             Assert.AreEqual(dir.routeId, 1, "\"routeId\" should be 1.");
             Assert.IsInstanceOfType(dir.summary.envelope, typeof(Geometry));
-            Assert.IsTrue(dir.summary.envelope.GetGeometryType() == GeometryType.Envelope);
+            Assert.IsTrue(dir.summary.envelope.GetGeometryType() == GeometryType.esriGeometryEnvelope);
             Assert.AreEqual(dir.features.Length, 6, "There should be six features.");
             Assert.IsInstanceOfType(solveResult.routes, typeof(FeatureSet), "\"routes\" should be a FeatureSet.");
             Assert.IsTrue(solveResult.routes.features.Length == 1, "\"routes.features\" should contain a single feature.");
             Feature feature = solveResult.routes.features[0];
             Assert.IsInstanceOfType(feature.geometry, typeof(Geometry), "route feature should be a Polyline.");
-            Assert.AreEqual(feature.geometry.GetGeometryType(), GeometryType.Polyline, "route feature should be a Polyline.");
+            Assert.AreEqual(feature.geometry.GetGeometryType(), GeometryType.esriGeometryPolyline, "route feature should be a Polyline.");
         }
 
         /// <summary>
@@ -157,6 +157,31 @@ namespace UnitTests
 
             Assert.IsNotNull(result.routes);
             Assert.AreEqual(result.routes.spatialReference.wkid, 4326);
+        }
+
+        /// <summary>
+        /// Tests the "Finding the optimized route and driving directions to visit a set of locations" example from <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/>
+        /// </summary>
+        [TestMethod]
+        public void TestSolve2()
+        {
+            const string stopsJson = "{\"features\":[{\"geometry\":{\"x\":-122.473948,\"y\":37.7436},\"attributes\":{\"Name\":\"Office\",\"Attr_TravelTime\":0}},{\"geometry\":{\"x\":-122.439613,\"y\":37.746144},\"attributes\":{\"Name\":\"Store 1\",\"Attr_TravelTime\":25}},{\"geometry\":{\"x\":-122.488254,\"y\":37.754092},\"attributes\":{\"Name\":\"Store 2\",\"Attr_TravelTime\":20}},{\"geometry\":{\"x\":-122.44915,\"y\":37.731837},\"attributes\":{\"Name\":\"Store 3\",\"Attr_TravelTime\":30}},{\"geometry\":{\"x\":-122.46441,\"y\":37.774756},\"attributes\":{\"Name\":\"Store 4\",\"Attr_TravelTime\":25}},{\"geometry\":{\"x\":-122.426896,\"y\":37.769352},\"attributes\":{\"Name\":\"Store 5\",\"Attr_TravelTime\":20}},{\"geometry\":{\"x\":-122.473948,\"y\":37.7436},\"attributes\":{\"Name\":\"Office\",\"Attr_TravelTime\":0}}]}";
+            var stopFeatures = JsonSerializer.DeserializeFromString<FeatureSet>(stopsJson);
+            Assert.AreEqual(stopFeatures.features.Length, 7, "There should be seven stops.");
+            var solveParams = new SolveParameters
+            {
+                stopsAsFeatures = stopFeatures,
+                findBestSequence = true,
+                preserveFirstStop = true,
+                preserveLastStop = true,
+                returnDirections = true,
+                returnRoutes = true
+            };
+            var svc = new RouteService();
+            SolveResult result = svc.Solve(solveParams, this.Token);
+            Assert.IsInstanceOfType(result, typeof(SolveResult));
+            Assert.IsNotNull(result.routes, "Routes should not be null.");
+            Assert.IsNotNull(result.directions, "Directions should not be null.");
         }
     }
 }

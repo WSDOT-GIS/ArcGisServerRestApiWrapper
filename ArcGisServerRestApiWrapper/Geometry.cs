@@ -69,23 +69,23 @@
         {
             if (points != null)
             {
-                return GeometryType.Multipoint;
+                return GeometryType.esriGeometryMultipoint;
             }
             else if (paths != null)
             {
-                return GeometryType.Polyline;
+                return GeometryType.esriGeometryPolyline;
             }
             else if (rings != null)
             {
-                return GeometryType.Polygon;
+                return GeometryType.esriGeometryPolygon;
             }
             else if (xmin.HasValue && ymin.HasValue && xmax.HasValue && ymax.HasValue)
             {
-                return GeometryType.Envelope;
+                return GeometryType.esriGeometryEnvelope;
             }
             else
             {
-                return GeometryType.Point;
+                return GeometryType.esriGeometryPoint;
             }
         }
     }
@@ -96,14 +96,14 @@
     public enum GeometryType
     {
         ///<summary>Point</summary>
-        Point,
+        esriGeometryPoint,
         ///<summary>Multipoint</summary>
-        Multipoint,
+        esriGeometryMultipoint,
         ///<summary>Polyline</summary>
-        Polyline,
+        esriGeometryPolyline,
         ///<summary>Polygon</summary>
-        Polygon,
+        esriGeometryPolygon,
         ///<summary>Envelope</summary>
-        Envelope
+        esriGeometryEnvelope
     }
 }
