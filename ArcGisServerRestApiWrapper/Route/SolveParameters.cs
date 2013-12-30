@@ -57,7 +57,7 @@ namespace Esri.ArcGisServer.Rest.Route
         /// preserveFirstStop and preserveLastStop parameters. The default value for this parameter is false.</para>
         /// <para>Caution: A true parameter value causes the service to switch from solving a shortest-path 
         /// problem to a traveling salesperson problem (TSP). Solving a TSP is computer-intensive operation and incurs 
-        /// additional service credits per route.
+        /// additional service credits per route.</para>
         /// </summary>
         public bool? findBestSequence { get; set; }
         /// <summary>
@@ -175,7 +175,7 @@ namespace Esri.ArcGisServer.Rest.Route
 
         /// <summary>
         /// <para>Use this parameter to specify if stops will be returned by the service. The possible values for this parameter are true, or false. A true value indicates that the stops used as input will be returned as part of the stops property in the JSON response. The default value for this parameter is false.</para>
-        /// <para>When finding optimized routes, the returnStops property can be set to true to determine the optimal sequence in which the route visits a particular stop by checking the Sequence property in the JSON response. If you have specified the stops parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, returning stops can allow you to draw the stop locations in your application. You may also want to set the returnStops property to true in order to determine if the stops were successfully located on the street network or had some other errors by checking the Status property in the JSON response. <para></para>
+        /// <para>When finding optimized routes, the returnStops property can be set to true to determine the optimal sequence in which the route visits a particular stop by checking the Sequence property in the JSON response. If you have specified the stops parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, returning stops can allow you to draw the stop locations in your application. You may also want to set the returnStops property to true in order to determine if the stops were successfully located on the street network or had some other errors by checking the Status property in the JSON response. </para>
         /// </summary>
         public bool? returnStops { get; set; }
 
