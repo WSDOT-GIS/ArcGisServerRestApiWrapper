@@ -126,6 +126,9 @@ namespace UnitTests
             Assert.AreEqual(feature.geometry.GetGeometryType(), GeometryType.Polyline, "route feature should be a Polyline.");
         }
 
+        /// <summary>
+        /// Tests the "Finding the best route and driving directions between two locations" example from <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/>
+        /// </summary>
         [TestMethod]
         public void TestSolve()
         {
@@ -135,11 +138,25 @@ namespace UnitTests
                 stops = new double[][] { 
                     new double[] {-122.4079,37.78356},
                     new double[] {-122.404,37.782}
-                }
+                },
+                ////restrictionAttributeNames = new string[] { "none" }
             };
             SolveResult result = svc.Solve(solveParameters, this.Token);
             Assert.IsInstanceOfType(result, typeof(SolveResult));
             Assert.IsNotNull(result.directions, "Directions should not be null");
+            Assert.AreEqual(result.directions.Length, 1, "Directions should have a single element.");
+            Direction direction = result.directions.First();
+            // Check some properties for expected results.
+            Assert.AreEqual(direction.routeId, 1);
+            Assert.AreEqual(direction.routeName, "Location 1 - Location 2");
+
+            Assert.IsTrue(direction.features.Length > 1);
+
+            Assert.AreEqual(direction.features.First().attributes["maneuverType"], "esriDMTDepart");
+            Assert.AreEqual(direction.features.Last().attributes["maneuverType"], "esriDMTStop");
+
+            Assert.IsNotNull(result.routes);
+            Assert.AreEqual(result.routes.spatialReference.wkid, 4326);
         }
     }
 }
