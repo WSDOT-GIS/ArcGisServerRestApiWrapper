@@ -167,23 +167,55 @@ namespace Esri.ArcGisServer.Rest.Route
         /// </summary>
         public bool? returnRoutes { get; set; }
 
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+        /// <summary>
+        /// Use this parameter to specify the type of route features that are output by the service. This parameter is applicable only if the returnRoutes parameter is set to true.
+        /// <see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/>
+        /// </summary>
         public OutputLineOptions? outputLines { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify if stops will be returned by the service. The possible values for this parameter are true, or false. A true value indicates that the stops used as input will be returned as part of the stops property in the JSON response. The default value for this parameter is false.</para>
+        /// <para>When finding optimized routes, the returnStops property can be set to true to determine the optimal sequence in which the route visits a particular stop by checking the Sequence property in the JSON response. If you have specified the stops parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, returning stops can allow you to draw the stop locations in your application. You may also want to set the returnStops property to true in order to determine if the stops were successfully located on the street network or had some other errors by checking the Status property in the JSON response. <para></para>
+        /// </summary>
         public bool? returnStops { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify if barriers will be returned by the service. The possible values for this parameter are true, or false. This parameter is applicable only if you have specified the value for the barriers parameter. A true value indicates that the point barriers used as input will be returned as part of the barriers property in the JSON response. The default value for this parameter is false.</para>
+        /// <para>If you have specified the barriers parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, returning barriers can allow you to draw the point barrier locations in your application. You may also want to set the returnBarriers property to true in order to determine if the point barriers were successfully located on the street network or had some other errors by checking the Status property in the JSON response.</para>
+        /// </summary>
         public bool? returnBarriers { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify if polyline barriers will be returned by the service. The possible values for this parameter are true, or false. This parameter is applicable only if you have specified the value for the polylineBarriers parameter. A true value indicates that the polyline barriers used as input will be returned as part of the polylineBarriers property in the JSON response. The default value for this parameter is false.</para>
+        /// <para>If you have specified the polylineBarriers parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, the returnPolylineBarriers parameter can be set to true so that you can draw the polyline barrier locations in your application.</para>
+        /// </summary>
         public bool? returnPolylineBarriers { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+
+        /// <summary>
+        /// <para>Use this parameter to specify if polygon barriers will be returned by the service. The possible values for this parameter are true, or false. This parameter is applicable only if you have specified the value for the polygonBarriers parameter. A true value indicates that the polygon barriers used as input will be returned as part of the polygonBarriers property in the JSON response. The default value for this parameter is false.</para>
+        /// <para>If you have specified the polygonBarriers parameter using a REST query request to any ArcGIS for Server feature, map, or geoprocessing service that returns a JSON feature set, the returnPolygonBarriers parameter can be set to true so that you can draw the polygon barrier locations in your application. </para>
+        /// </summary>
         public bool? returnPolygonBarriers { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>Use this parameter to specify if invalid stops should be ignored when finding the best route. The possible values for this parameter are true, or false. A stop is considered as invalid by the service if there are no streets within 12.42 miles (20 kilometers) of the stop location. If this parameter is set to false any invalid stop in your request will cause the service to return a failure. The default value for this parameter is true. </summary>
         public bool? ignoreInvalidLocations { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify the spatial reference of the geometries such as the routes or the stops returned by the service. The parameter value can be specified as a well-known ID (WKID) for the spatial reference. . If outSR is not specified, the geometries are returned in the default spatial reference WGS84. You can find the WKID for your spatial reference depending on whether the coordinates should be represented in a geographic coordinate system or a projected coordinate system.</para>
+        /// <para>Many of the basemaps provided by ArcGIS Online are in the Web Mercator spatial reference (WKID 102100). Specifying outSR=102100 will return the geometries for the routes in the Web Mercator spatial reference and can be used to draw the routes on top of the basemaps.</para>
+        /// </summary>
         public int? outSR { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// <para>Use this parameter to specify by how much you want to simplify the route geometry returned by the service. Simplification maintains critical points on a route, such as turns at intersections, to define the essential shape of the route and removes other points. The simplification distance you specify is the maximum allowable offset that the simplified line can deviate from the original line. Simplifying a line reduces the number of vertices that are part of the route geometry. This reduces the overall response size and also improves the performance for drawing the route shapes in the applications.</para>
+        /// <para>The default value for this parameter is 10. The units are specified with the outputGeometryPrecisionUnits parameter.</para>
+        /// </summary>
         public float? outputGeometryPrecision { get; set; }
-        /// <summary><see href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/"/></summary>
+
+        /// <summary>
+        /// Use this parameter to specify the units for the value specified for the outputGeometryPrecision parameter. The parameter value should be specified as one of the following values: esriCentimeters, esriDecimalDegrees, esriDecimeters, esriFeet, esriInches, esriKilometers, esriMeters, esriMiles, esriMillimeters, esriNauticalMiles, esriPoints, and esriYards. The default value is esriMeters. 
+        /// </summary>
         public MeasureUnits? outputGeometryPrecisionUnits { get; set; }
 
         /// <summary>
