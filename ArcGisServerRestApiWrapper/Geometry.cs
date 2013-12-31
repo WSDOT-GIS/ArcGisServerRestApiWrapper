@@ -14,7 +14,7 @@
         /// <summary>Indicates if the geometry has M information. Does not apply to Point or Envelope geometry.</summary>
         public bool? hasM { get; set; }
         /// <summary>Indicates if the geometry has Z information. Does not apply to Point or Envelope geometry.</summary>
-        public bool? hazZ { get; set; }
+        public bool? hasZ { get; set; }
 
         #region Point properties
         /// <summary>The X value of a Point geometry.</summary>
