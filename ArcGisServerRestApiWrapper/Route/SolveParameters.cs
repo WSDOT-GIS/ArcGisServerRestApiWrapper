@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace Esri.ArcGisServer.Rest.Route
 {
@@ -81,7 +82,7 @@ namespace Esri.ArcGisServer.Rest.Route
         /// <para>Caution: The service automatically reverts to using hierarchy if the straight-line distance between the first two stops is greater than 50 miles (80.46 kilometers) even if you have specified to find the route without using hierarchy.</para>
         /// </summary>
         public bool? useHierarchy { get; set; }
-        
+
         /// <summary>
         /// Use this parameter to specify if you want to find the quickest route that minimizes the travel time or the shortest route that minimizes the travel distance between the stops. The parameter can have the following values:
         /// <list type="table">
@@ -232,7 +233,7 @@ namespace Esri.ArcGisServer.Rest.Route
             }
             else if (this.stopsAsFeatures != null)
             {
-                sBuilder.AppendFormat("stops={0}", JsonSerializer.SerializeToString(this.stopsAsFeatures));
+                sBuilder.AppendFormat("stops={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.stopsAsFeatures)));
             }
             else if (!string.IsNullOrWhiteSpace(this.stopsAsUrl))
             {
@@ -294,16 +295,16 @@ namespace Esri.ArcGisServer.Rest.Route
             }
             else if (this.barriersAsPointFeatures != null)
             {
-                sBuilder.AppendFormat("&barriers={0}", JsonSerializer.SerializeToString(this.barriersAsPointFeatures));
+                sBuilder.AppendFormat("&barriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.barriersAsPointFeatures)));
             }
 
             if (this.polylineBarriers != null)
             {
-                sBuilder.AppendFormat("&polylineBarriers={0}", JsonSerializer.SerializeToString(this.polylineBarriers));
+                sBuilder.AppendFormat("&polylineBarriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.polylineBarriers)));
             }
             if (this.polygonBarriers != null)
             {
-                sBuilder.AppendFormat("&polygonBarriers={0}", JsonSerializer.SerializeToString(this.polygonBarriers));
+                sBuilder.AppendFormat("&polygonBarriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.polygonBarriers)));
 
             }
             if (this.returnDirections.HasValue)
