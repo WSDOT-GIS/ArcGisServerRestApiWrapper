@@ -54,6 +54,8 @@
     <Compile Include="Authentication\TokenErrorInfo.cs" />
     <Compile Include="Feature.cs" />
     <Compile Include="FeatureSet.cs" />
+    <Compile Include="Geocode\FindParameters.cs" />
+    <Compile Include="Geocode\GeocodeService.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Maps\ExportMapImageFormat.cs" />
     <Compile Include="Maps\ExportMapLayerDefinition.cs" />
