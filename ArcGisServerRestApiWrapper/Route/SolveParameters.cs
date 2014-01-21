@@ -1,4 +1,4 @@
-﻿using ServiceStack.Text;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -233,7 +233,11 @@ namespace Esri.ArcGisServer.Rest.Route
             }
             else if (this.stopsAsFeatures != null)
             {
-                sBuilder.AppendFormat("stops={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.stopsAsFeatures)));
+				JsonSerializerSettings settings = new JsonSerializerSettings
+				{
+					NullValueHandling = NullValueHandling.Ignore
+				};
+                sBuilder.AppendFormat("stops={0}", HttpUtility.UrlEncode(JsonConvert.SerializeObject(this.stopsAsFeatures, settings)));
             }
             else if (!string.IsNullOrWhiteSpace(this.stopsAsUrl))
             {
@@ -295,16 +299,16 @@ namespace Esri.ArcGisServer.Rest.Route
             }
             else if (this.barriersAsPointFeatures != null)
             {
-                sBuilder.AppendFormat("&barriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.barriersAsPointFeatures)));
+                sBuilder.AppendFormat("&barriers={0}", HttpUtility.UrlEncode(JsonConvert.SerializeObject(this.barriersAsPointFeatures)));
             }
 
             if (this.polylineBarriers != null)
             {
-                sBuilder.AppendFormat("&polylineBarriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.polylineBarriers)));
+                sBuilder.AppendFormat("&polylineBarriers={0}", HttpUtility.UrlEncode(JsonConvert.SerializeObject(this.polylineBarriers)));
             }
             if (this.polygonBarriers != null)
             {
-                sBuilder.AppendFormat("&polygonBarriers={0}", HttpUtility.UrlEncode(JsonSerializer.SerializeToString(this.polygonBarriers)));
+                sBuilder.AppendFormat("&polygonBarriers={0}", HttpUtility.UrlEncode(JsonConvert.SerializeObject(this.polygonBarriers)));
 
             }
             if (this.returnDirections.HasValue)
