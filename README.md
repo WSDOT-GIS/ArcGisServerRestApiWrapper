@@ -4,6 +4,3 @@ This library provides a wrapper around the [ArcGIS Server REST API](http://help.
 
 ## Unit Tests ##
 You will need to add a valid `ClientId` and `ClientSecret` value to the app.config file. This file is omitted from the repository.
-
-## License ##
-Licensed under [The MIT License](http://www.opensource.org/licenses/MIT).
