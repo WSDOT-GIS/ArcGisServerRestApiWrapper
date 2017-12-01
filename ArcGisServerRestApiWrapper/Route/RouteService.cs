@@ -1,5 +1,5 @@
 ﻿using Esri.ArcGisServer.Rest.Authentication;
-using ServiceStack.Text;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
@@ -55,7 +55,7 @@ namespace Esri.ArcGisServer.Rest.Route
             }
 
             // If the request returned an error, throw an exception.
-            var errorResponse = JsonSerializer.DeserializeFromString<SolveErrorResponse>(json);
+            var errorResponse = JsonConvert.DeserializeObject<SolveErrorResponse>(json);
             if (errorResponse.error != null)
             {
                 throw new SolveException(errorResponse);
@@ -63,7 +63,7 @@ namespace Esri.ArcGisServer.Rest.Route
 
             SolveResult solveResult = null;
 
-            solveResult = JsonSerializer.DeserializeFromString<SolveResult>(json);
+			solveResult = JsonConvert.DeserializeObject<SolveResult>(json);
 
 
             return solveResult;

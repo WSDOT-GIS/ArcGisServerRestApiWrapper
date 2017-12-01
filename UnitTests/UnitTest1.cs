@@ -3,7 +3,7 @@ using Esri.ArcGisServer.Rest.Authentication;
 using Esri.ArcGisServer.Rest.Maps;
 using Esri.ArcGisServer.Rest.Route;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ServiceStack.Text;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;
@@ -112,7 +112,7 @@ namespace UnitTests
         {
             // Get the Sample JSON from the assembly resources. This sample result comes from http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Route_service/02r300000036000000/.
             string json = Resources.SampleSolveResults;
-            var solveResult = JsonSerializer.DeserializeFromString<SolveResult>(json);
+            var solveResult = JsonConvert.DeserializeObject<SolveResult>(json);
             Assert.IsTrue(solveResult.directions.Length == 1, "There should be a single element in \"directions\".");
             var dir = solveResult.directions[0];
             Assert.AreEqual(dir.routeId, 1, "\"routeId\" should be 1.");
@@ -166,7 +166,7 @@ namespace UnitTests
         public void TestSolve2()
         {
             const string stopsJson = "{\"features\":[{\"geometry\":{\"x\":-122.473948,\"y\":37.7436},\"attributes\":{\"Name\":\"Office\",\"Attr_TravelTime\":0}},{\"geometry\":{\"x\":-122.439613,\"y\":37.746144},\"attributes\":{\"Name\":\"Store 1\",\"Attr_TravelTime\":25}},{\"geometry\":{\"x\":-122.488254,\"y\":37.754092},\"attributes\":{\"Name\":\"Store 2\",\"Attr_TravelTime\":20}},{\"geometry\":{\"x\":-122.44915,\"y\":37.731837},\"attributes\":{\"Name\":\"Store 3\",\"Attr_TravelTime\":30}},{\"geometry\":{\"x\":-122.46441,\"y\":37.774756},\"attributes\":{\"Name\":\"Store 4\",\"Attr_TravelTime\":25}},{\"geometry\":{\"x\":-122.426896,\"y\":37.769352},\"attributes\":{\"Name\":\"Store 5\",\"Attr_TravelTime\":20}},{\"geometry\":{\"x\":-122.473948,\"y\":37.7436},\"attributes\":{\"Name\":\"Office\",\"Attr_TravelTime\":0}}]}";
-            var stopFeatures = JsonSerializer.DeserializeFromString<FeatureSet>(stopsJson);
+            var stopFeatures = JsonConvert.DeserializeObject<FeatureSet>(stopsJson);
             Assert.AreEqual(stopFeatures.features.Length, 7, "There should be seven stops.");
             var solveParams = new SolveParameters
             {

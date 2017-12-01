@@ -1,4 +1,4 @@
-﻿using ServiceStack.Text;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,12 +59,12 @@ namespace Esri.ArcGisServer.Rest.Authentication
             }
             if (json.Contains("\"error\""))
             {
-                var dict = JsonSerializer.DeserializeFromString<Dictionary<string, TokenErrorInfo>>(json);
-                throw new GetTokenException(dict["error"]);
+				var dict = JsonConvert.DeserializeObject<Dictionary<string, TokenErrorInfo>>(json);
+				throw new GetTokenException(dict["error"]);
             }
             else
             {
-                tokenResponse = JsonSerializer.DeserializeFromString<TokenResponse>(json);
+				tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(json);
             }
 
             return new Token(tokenResponse);
