@@ -1,4 +1,4 @@
-﻿using ServiceStack.Text;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,7 +95,7 @@ namespace Esri.ArcGisServer.Rest
             switch (tc)
             {
                 case TypeCode.Object:
-                    output = HttpUtility.UrlEncode(JsonSerializer.SerializeToString(value, t));
+                    output = HttpUtility.UrlEncode(JsonConvert.SerializeObject(value));
                     break;
                 case TypeCode.String:
                     output = HttpUtility.UrlEncode((string)value);

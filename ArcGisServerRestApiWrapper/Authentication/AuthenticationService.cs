@@ -59,16 +59,15 @@ namespace Esri.ArcGisServer.Rest.Authentication
             }
             if (json.Contains("\"error\""))
             {
-				var dict = JsonConvert.DeserializeObject<Dictionary<string, TokenErrorInfo>>(json);
-				throw new GetTokenException(dict["error"]);
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, TokenErrorInfo>>(json);
+                throw new GetTokenException(dict["error"]);
             }
             else
             {
-				tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(json);
+                tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(json);
             }
 
             return new Token(tokenResponse);
-            
         }
     }
 }
