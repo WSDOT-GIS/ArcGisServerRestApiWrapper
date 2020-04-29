@@ -45,7 +45,7 @@ namespace UnitTests
             }
         }
 
-        [TestProperty("mapServiceUrl", "http://www.wsdot.wa.gov/geosvcs/ArcGIS/rest/services/Shared/WebBaseMapWebMercator/MapServer")]
+        [TestProperty("mapServiceUrl", "https://data.wsdot.wa.gov/arcgis/rest/services/Shared/WebBaseMapWebMercator/MapServer")]
         [TestMethod]
         public void TestExportMap()
         {
