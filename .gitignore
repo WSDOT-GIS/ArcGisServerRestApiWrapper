@@ -5,3 +5,7 @@ obj
 /UnitTests/App.config
 /packages
 /TestResults
+/builddev
+*/builddev
+/build
+*/build
