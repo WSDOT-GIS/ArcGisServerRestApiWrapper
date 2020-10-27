@@ -20,7 +20,7 @@ namespace Esri.ArcGisServer.Rest.Route
         /// Creates a new instance.
         /// </summary>
         /// <param name="url">The URL of the service. You can omit this parameter if you are using the default.</param>
-        public RouteService(string url = "http://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/")
+        public RouteService(string url = "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/")
         {
             this.Uri = new Uri(url);
         }
