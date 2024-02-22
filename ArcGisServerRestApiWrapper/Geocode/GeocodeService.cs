@@ -21,7 +21,7 @@ namespace Esri.ArcGisServer.Rest.Geocode
         /// Creates a new instance.
         /// </summary>
         /// <param name="url">The URL of the service. You can omit this parameter if you are using the default Esri World Geocoding Service.</param>
-        public GeocodeService(string url = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/")
+        public GeocodeService(string url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/")
         {
             this.Uri = new Uri(url);
         }

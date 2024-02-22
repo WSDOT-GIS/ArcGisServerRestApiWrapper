@@ -43,7 +43,9 @@ namespace Esri.ArcGisServer.Rest.Authentication
                 strBuilder.AppendFormat("&expiration={0}", expirationInMinutes.Value);
             }
             uriBuilder.Query = strBuilder.ToString();
-            
+
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
             var request = HttpWebRequest.Create(uriBuilder.Uri);
             TokenResponse tokenResponse;
             string json;
